@@ -33,9 +33,9 @@ And some nested objects
   shapeful(obj, assertions);
 ```
 
-### Union of assertions.
+### Union of assertions
 
-Returns if any of the assertions in a list match the shape.
+Returns true if any of the assertions in a list match the shape.
 ```javascript
   var obj = {obj: {}, list: []};
   var asserts1 = {obj: ['object', 'array'], list: ['object', 'array'] };
