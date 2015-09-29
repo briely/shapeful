@@ -1,0 +1,22 @@
+{
+  "name": "shapeful",
+  "version": "1.0.0",
+  "description": "A shaemful attempt at checking the shape of an object",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briely/shapeful.git"
+  },
+  "author": "brielymarum@gmail.com",
+  "license": "Apache License Version  2.0",
+  "bugs": {
+    "url": "https://github.com/briely/shapeful/issues"
+  },
+  "devDependencies": {
+    "tape": "4.2.0"
+  },
+  "homepage": "https://github.com/briely/shapeful#readme"
+}
