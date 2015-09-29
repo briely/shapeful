@@ -26,7 +26,10 @@ And some nested objects
 
 ```javascript
   var obj = {attr: true, obj: {foo: 'bar', my: 0, word: false}};
-  var assertions = {attr: 'boolean', obj: {foo: 'string', my: 'number', word: 'boolean'}};
+  var assertions = {
+    attr: 'boolean',
+    obj: {foo: 'string', my: 'number', word: 'boolean'}
+  };
   shapeful(obj, assertions);
 ```
 
