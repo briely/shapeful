@@ -29,9 +29,16 @@ test('correctly detects they types of primitive values', function(t) {
   });
 });
 
-test('correct detect shape of simple object', function(t){
+test('correctly detect shape of simple object', function(t){
   var obj = {foo: 'bar', my: 0, word: false};
   var assertions = {foo: 'string', my: 'number', word: 'boolean'};
+  t.plan(1);
+  t.ok(shapeful(obj, assertions));
+});
+
+test('correctly detect the shape of nested objects', function(t){
+  var obj = {attr: true, obj: {foo: 'bar', my: 0, word: false}};
+  var assertions = {attr: 'boolean', obj: {foo: 'string', my: 'number', word: 'boolean'}};
   t.plan(1);
   t.ok(shapeful(obj, assertions));
 });
