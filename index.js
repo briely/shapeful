@@ -4,6 +4,7 @@
  * shapeful(["foo", "bar"], "array");
  */
 module.exports = function(obj, assert) {
+  if (typeof obj === 'undefined') return assert === 'undefined';
   if (typeof assert === 'undefined') return false;
   if (typeof assert === 'string' && assert !== 'array') return typeof obj === assert && !Array.isArray(obj);
   if (assert === 'array') return Array.isArray(obj);

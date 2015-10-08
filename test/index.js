@@ -7,6 +7,11 @@ test('undefined assertions returns false', function(t){
   t.notOk(shapeful('something'));
 });
 
+test('undefined subject has shape \'undefined\'', function(t){
+  t.plan(1);
+  t.ok(shapeful(undefined, 'undefined'));
+});
+
 test('can assert type of undefined', function(t){
   t.plan(1);
   t.ok(shapeful(undefined, 'undefined'));
