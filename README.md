@@ -45,6 +45,18 @@ And some nested objects
   shapeful(obj, assertions);
 ```
 
+Type type of array members can also be tested
+```javascript
+
+  var obj = {list: ['a', 'b', 'c']};
+  var obj2 = {list: [{attr: 1}, {attr: 2}, {attr: 3}]}
+  var obj3 = {list: ['a', 'b', false]};
+  var assertion = {list: {__array: 'string'}};
+  var assertion2 = {list: {__array: {attr: 'number'}}};
+  shapeful(obj, assertion) === true;
+  shapeful(obj2, assertion2 === true;
+  shapeful(obj3, assertion) === false;
+```
 ### Union of assertions
 
 Returns true if any of the assertions in a list match the shape.

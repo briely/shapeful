@@ -64,6 +64,18 @@ test('correctly detect the shape of nested objects', function(t){
   t.ok(shapeful(obj, assertions));
 });
 
+test('can apply an assertion to all members of an array', function(t){
+  var obj = {list: ['a', 'b', 'c']};
+  var obj2 = {list: [{attr: 1}, {attr: 2}, {attr: 3}]}
+  var obj3 = {list: ['a', 'b', false]};
+  var assertion = {list: {__array: 'string'}};
+  var assertion2 = {list: {__array: {attr: 'number'}}};
+  t.plan(3);
+  t.ok(shapeful(obj, assertion));
+  t.ok(shapeful(obj2, assertion2));
+  t.notOk(shapeful(obj3, assertion));
+});
+
 test('accepts a list of shapes', function(t){
   var obj = {obj: {}, list: []};
   var asserts1 = {obj: ['object', 'array'], list: ['object', 'array'] };
