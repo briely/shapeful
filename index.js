@@ -2,7 +2,9 @@
  * shapeful(obj, {"key": "type"});
  * shapeful({"foo": "bar"}, {"foo": "string"});
  * shapeful(["foo", "bar"], "array");
+ * shapeful({"foo": "bar"}, {"foo": "string", "baz": {"optional": "string"}});
  */
+var optional = '__optional'
 module.exports = function(obj, assert) {
   if (typeof obj === 'undefined') return assert === 'undefined';
   if (typeof assert === 'undefined') return false;
@@ -12,6 +14,11 @@ module.exports = function(obj, assert) {
     return p || module.exports(obj, v);
   }, false);
   return Object.keys(assert).reduce(function(p, k){
-    return p && obj.hasOwnProperty(k) && module.exports(obj[k], assert[k])
+    var a = assert[k];
+    if (typeof obj === 'object' && a.hasOwnProperty(optional)) {
+      if (!obj.hasOwnProperty(k)) return true;
+      a = a[optional];
+    }
+    return p && obj.hasOwnProperty(k) && module.exports(obj[k], a)
   }, true);
 };

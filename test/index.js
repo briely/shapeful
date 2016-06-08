@@ -41,6 +41,22 @@ test('correctly detect shape of simple object', function(t){
   t.ok(shapeful(obj, assertions));
 });
 
+test('an assertion may be optional', function(t){
+  var obj = {foo: 'bar', my: 0};
+  var assertions = {foo: 'string', my: 'number', word: {__optional: 'boolean'}};
+  t.plan(1);
+  t.ok(shapeful(obj, assertions));
+});
+
+test('if an optional value is supplied, it must be the correctl shape', function(t){
+  var obj = {foo: 'bar', my: 0, word: false};
+  var obj2 = {foo: 'bar', my: 0, word: 0};
+  var assertions = {foo: 'string', my: 'number', word: {__optional: 'boolean'}};
+  t.plan(2);
+  t.ok(shapeful(obj, assertions));
+  t.notOk(shapeful(obj2, assertions));
+});
+
 test('correctly detect the shape of nested objects', function(t){
   var obj = {attr: true, obj: {foo: 'bar', my: 0, word: false}};
   var assertions = {attr: 'boolean', obj: {foo: 'string', my: 'number', word: 'boolean'}};

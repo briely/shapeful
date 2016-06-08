@@ -22,6 +22,18 @@ A shameful attempt at checking the shape of an object. I'm sure it exists, but m
   shapeful(obj, assertions) === true;
 ```
 
+### Optional attributes can be described
+
+```javascript
+  var obj = {foo: 'bar', my: 0};
+  var obj2 = {foo: 'bar', my: 0, word: false};
+  var obj3 = {foo: 'bar', my: 0, word: 0};
+  var assertions = {foo: 'string', my: 'number', word: {__optional: 'boolean'}};
+  shapeful(obj, assertions) === true;
+  shapeful(obj2, assertions) === true;
+  shapeful(obj3, assertions) === false;
+```
+
 And some nested objects
 
 ```javascript
