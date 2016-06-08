@@ -1,6 +1,6 @@
 {
   "name": "shapeful",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A shameful attempt at checking the shape of an object",
   "main": "index.js",
   "scripts": {
